@@ -56,7 +56,7 @@
     "semver": "^7.3.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.7",
     "@babel/eslint-parser": "^7.17.0",
     "@serverless/test": "^9.0.0",
     "chai": "^4.3.6",
@@ -74,7 +74,7 @@
     "mockery": "^2.1.0",
     "nyc": "^15.1.0",
     "prettier": "^2.5.1",
-    "serverless": "^3.7.4",
+    "serverless": "^3.7.5",
     "sinon": "^13.0.1",
     "sinon-chai": "^3.7.0",
     "unzipper": "^0.10.11",
