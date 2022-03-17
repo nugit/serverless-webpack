@@ -135,7 +135,7 @@ describe('packageModules', () => {
 
         module.compileStats = stats;
         return expect(module.packageModules())
-          .resolves.toEqual(['.webpack/test-service.zip'])
+          .resolves.toEqual([path.join('.webpack', 'test-service.zip')])
           .then(() => BbPromise.all([]));
       });
 
@@ -197,7 +197,7 @@ describe('packageModules', () => {
           fsMock._statMock.isDirectory.mockReturnValue(false);
 
           module.compileStats = stats;
-          return expect(module.packageModules()).resolves.toEqual(['.webpack/test-service.zip']);
+          return expect(module.packageModules()).resolves.toEqual([path.join('.webpack', 'test-service.zip')]);
         });
       });
 
@@ -245,13 +245,13 @@ describe('packageModules', () => {
         return BbPromise.each(['1.18.1', '2.17.0', '10.15.3'], version => {
           getVersionStub.mockReturnValue(version);
           return expect(module.packageModules())
-            .resolves.toEqual(['.webpack/test-service.zip'])
+            .resolves.toEqual([path.join('.webpack', 'test-service.zip')])
             .then(() => BbPromise.all([]));
         }).then(() =>
           BbPromise.each(['1.17.0', '1.16.0-alpha', '1.15.3'], version => {
             getVersionStub.mockReturnValue(version);
             return expect(module.packageModules())
-              .resolves.toEqual(['.webpack/test-service.zip'])
+              .resolves.toEqual([path.join('.webpack', 'test-service.zip')])
               .then(() => BbPromise.all([]));
           })
         );
@@ -402,7 +402,7 @@ describe('packageModules', () => {
         fsMock._statMock.isDirectory.mockReturnValue(false);
 
         module.compileStats = stats;
-        return expect(module.packageModules()).resolves.toEqual(['.webpack/test-service.zip']);
+        return expect(module.packageModules()).resolves.toEqual([path.join('.webpack', 'test-service.zip')]);
       });
     });
 
@@ -472,7 +472,10 @@ describe('packageModules', () => {
 
         module.compileStats = stats;
 
-        return expect(module.packageModules()).resolves.toEqual(['.webpack/func1.zip', '.webpack/func2.zip']);
+        return expect(module.packageModules()).resolves.toEqual([
+          path.join('.webpack', 'func1.zip'),
+          path.join('.webpack', 'func2.zip')
+        ]);
       });
     });
   });
